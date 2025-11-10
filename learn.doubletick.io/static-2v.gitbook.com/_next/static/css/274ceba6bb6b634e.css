@@ -1,0 +1,8 @@
+svg.gb-icon {
+  background-color: rgb(3 167 204);
+}
+svg.gb-icon-s path,
+svg.gb-icon-s use {
+  fill: rgb(3 167 204);
+  stroke:rgb(3 167 204);
+}
