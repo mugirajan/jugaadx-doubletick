@@ -2444,6 +2444,14 @@
       function b() {
         return null !== h ? h.onRouterTransitionStart : null;
       }
+/*************  ✨ Windsurf Command ⭐  *************/
+/**
+ * Sets up a navigation action
+ * @param {string} e - The url to navigate to
+ * @param {string} t - The type of navigation (e.g. 'push', 'replace')
+ * @param {boolean} r - Whether the new page should be scrolled to the top
+
+/*******  7d85b48c-c30d-4375-963a-893e4b9ce9a4  *******/
       function v(e, t, r, u) {
         let o = new URL((0, i.addBasePath)(e), location.href);
         (0, f.setLinkForCurrentNavigation)(u);
