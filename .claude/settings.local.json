@@ -3,7 +3,9 @@
     "allow": [
       "Bash(Remove-Item -Force)",
       "Bash(find:*)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(xargs:*)"
     ],
     "deny": [],
     "ask": []
