@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node:*)"
+      "Bash(Remove-Item -Force)",
+      "Bash(find:*)",
+      "Bash(npx:*)"
     ],
     "deny": [],
     "ask": []
