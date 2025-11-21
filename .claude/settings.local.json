@@ -5,7 +5,9 @@
       "Bash(find:*)",
       "Bash(npx:*)",
       "Bash(powershell -Command:*)",
-      "Bash(xargs:*)"
+      "Bash(xargs:*)",
+      "Bash(findstr:*)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []
