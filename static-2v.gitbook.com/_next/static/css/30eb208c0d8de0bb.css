@@ -2826,7 +2826,7 @@
     color: rgb(var(--danger-9));
   }
   .text-green-500 {
-    color: var(--color-green-500);
+    color: rgb(3 167 204);
   }
   .text-info {
     color: rgb(var(--info-11));
@@ -4227,7 +4227,7 @@
       color: rgb(var(--neutral-6));
     }
     .hover\:text-primary:hover {
-      color: rgb(var(--primary-11));
+      color: rgb(33 150 243 / 64%);
     }
     .hover\:text-primary-strong:hover {
       color: rgb(var(--primary-12));
@@ -6111,7 +6111,7 @@
     color: rgb(var(--danger-11));
   }
   html.links-default .links-default\:text-primary-subtle {
-    color: rgb(var(--primary-9));
+    color: rgb(3 167 204);
   }
   html.links-default .links-default\:text-success {
     color: rgb(var(--success-11));
