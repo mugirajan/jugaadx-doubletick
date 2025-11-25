@@ -8000,3 +8000,14 @@ html.theme-muted .highlight-line-number {
     transform: rotate(1turn) translate(10%) rotate(-1turn) translate(-10%);
   }
 }
+
+.additional-style{
+  visibility: hidden !important;
+}
+
+.additional-style{
+  visibility: hidden !important;
+}
+.tab-details:hover .additional-style{
+  visibility: visible !important;
+}
