@@ -8011,3 +8011,9 @@ html.theme-muted .highlight-line-number {
 .tab-details:hover .additional-style{
   visibility: visible !important;
 }
+[data-radix-popper-content-wrapper] {
+    /* display: none !important; */
+}
+.page-cover-index{
+  display:none;
+}
