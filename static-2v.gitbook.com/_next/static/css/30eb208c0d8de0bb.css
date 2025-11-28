@@ -8017,3 +8017,6 @@ html.theme-muted .highlight-line-number {
 .page-cover-index{
   display:none;
 }
+.d-none{
+  display: none !important;
+}
