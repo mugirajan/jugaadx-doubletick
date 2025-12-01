@@ -1,13 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(Remove-Item -Force)",
-      "Bash(find:*)",
-      "Bash(npx:*)",
-      "Bash(powershell -Command:*)",
-      "Bash(xargs:*)",
-      "Bash(findstr:*)",
-      "Bash(node:*)"
+      "Bash(Select-Object -First 1)",
+      "Bash(Get-Content -Head 300)",
+      "Bash(Out-String)",
+      "Bash(del extract-menu.js add-script.js inject-dropdown-script.js inject-all-pages.js)",
+      "Bash(git restore:*)"
     ],
     "deny": [],
     "ask": []
