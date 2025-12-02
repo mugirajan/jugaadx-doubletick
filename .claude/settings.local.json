@@ -5,7 +5,10 @@
       "Bash(Get-Content -Head 300)",
       "Bash(Out-String)",
       "Bash(del extract-menu.js add-script.js inject-dropdown-script.js inject-all-pages.js)",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(Select-Object -First 20)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"resolve-conflicts.ps1\")",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
