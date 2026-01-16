@@ -39,6 +39,20 @@ header * {
     padding-bottom: 0 !important;
 }
 
+.no-margin-y {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.lesser-margin-y {
+    margin-top: 0.20rem !important;
+    margin-bottom: 0.20rem !important;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0 !important;
+}
+
 /* ========================================
    GLOBAL PAGE SCROLLING
    ======================================== */
@@ -148,8 +162,18 @@ div[class*="flex"][class*="lg:flex-row"] {
         background: white !important;
         z-index: 9999 !important;
         overflow-y: auto !important;
+        overflow-x: hidden !important;
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3) !important;
         transition: transform 0.3s ease-in-out !important;
+    }
+
+    /* Ensure mobile sidebar scroll container works */
+    aside#table-of-contents [data-testid="toc-scroll-container"] {
+        flex: 1 1 auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        min-height: 0 !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 
     /* Remove bullets from mobile sidebar menu */
@@ -228,7 +252,7 @@ div[class*="flex"][class*="lg:flex-row"] {
    ======================================== */
 
 /* Ensure all images are responsive (except header logos) */
-img:not(header img) {
+img:not(header img, .no-max-width) {
     max-width: 100% !important;
     height: auto !important;
 }
@@ -280,7 +304,7 @@ embed {
 /* Ensure all elements within body respect the container width */
 @media screen and (min-width: 1024px) {
     /* Specifically constrain wide elements with aggressive rules */
-    body img:not(header img):not(aside img),
+    body img:not(header img, .no-max-width):not(aside img),
     body figure:not(aside figure),
     body video:not(aside video),
     body iframe:not(aside iframe),
@@ -442,18 +466,42 @@ aside li::after,
         scrollbar-color: #03a7cc #f1f1f1 !important;
     }
 
+    /* Sidebar logo container - ensure it's visible on desktop */
+    aside#table-of-contents > div.hidden.lg\:flex {
+        display: flex !important;
+        visibility: visible !important;
+        padding: 15px 20px !important;
+        flex-shrink: 0 !important;
+    }
+
     /* Sidebar logo sizing - full width */
     aside#table-of-contents a.group\/headerlogo,
     aside#table-of-contents a[class*="group"][class*="headerlogo"] {
+        display: flex !important;
         width: 100% !important;
         max-width: 240px !important;
         height: auto !important;
     }
 
-    aside#table-of-contents img {
+    /* Sidebar logo - only show light mode version, hide dark mode version */
+    aside#table-of-contents img.block {
         width: 100% !important;
         height: 50px !important;
         max-width: 100% !important;
+        display: block !important;
+    }
+
+    aside#table-of-contents img.hidden {
+        display: none !important;
+    }
+
+    /* Ensure inner scroll container fills available height */
+    aside#table-of-contents [data-testid="toc-scroll-container"],
+    aside#table-of-contents .hide-scrollbar.overflow-y-auto {
+        flex: 1 1 auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        min-height: 0 !important;
     }
 
     /* Custom scrollbar for sidebar */
@@ -484,7 +532,7 @@ aside li::after,
         margin-top: 0 !important;
         margin-bottom: 0 !important;
         padding-top: 0 !important;
-        padding-bottom: 0 !important;
+        padding-bottom: 15px !important;
         box-sizing: border-box !important;
         overflow-x: hidden !important;
     }
@@ -867,9 +915,9 @@ aside li::after,
         gap: 1rem !important;
     }
 
-    /* Grid layouts - convert to single column */
-    .grid,
-    [class*="grid"] {
+    /* Grid layouts - convert to single column (except breadcrumbs) */
+    .grid:not(nav[aria-label="Breadcrumb"] *),
+    [class*="grid"]:not(nav[aria-label="Breadcrumb"] *) {
         grid-template-columns: 1fr !important;
         gap: 1rem !important;
     }
@@ -1058,5 +1106,125 @@ aside li::after,
     /* Remove hover effects on touch devices */
     *:hover {
         -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* ========================================
+   SIDEBAR DROPDOWN TOGGLE STYLES
+   ======================================== */
+
+/* Smooth transitions for collapsible sub-menu items ONLY */
+aside#table-of-contents li > div.flex.overflow-hidden {
+    transition: height 0.25s ease-out, opacity 0.25s ease-out !important;
+}
+
+/* Chevron rotation animation */
+aside#table-of-contents a.toclink span.group svg.gb-icon {
+    transition: transform 0.2s ease-out !important;
+}
+
+/* Make chevron spans more clickable */
+aside#table-of-contents a.toclink span.group {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+}
+
+/* Hover effect on chevron */
+aside#table-of-contents a.toclink span.group:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ========================================
+   BREADCRUMB FIXES - PREVENT LINE WRAPPING
+   ======================================== */
+
+/* Breadcrumb nav wrapper - allow full width */
+nav[aria-label="Breadcrumb"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Breadcrumb container - force single line with high specificity */
+nav[aria-label="Breadcrumb"] ol,
+nav[aria-label="Breadcrumb"] ol.flex,
+nav[aria-label="Breadcrumb"] ol.flex.flex-wrap,
+nav[aria-label="Breadcrumb"] ol[class*="flex"] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    gap: 0.5rem !important;
+    width: max-content !important;
+    max-width: 100% !important;
+}
+
+/* Breadcrumb items - force inline on same line */
+nav[aria-label="Breadcrumb"] li,
+nav[aria-label="Breadcrumb"] li.flex,
+nav[aria-label="Breadcrumb"] ol li,
+nav[aria-label="Breadcrumb"] ol.flex li {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    gap: 0.5rem !important;
+}
+
+/* Allow the last breadcrumb item to shrink/truncate if needed */
+nav[aria-label="Breadcrumb"] li:last-child,
+nav[aria-label="Breadcrumb"] ol li:last-child {
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Breadcrumb links - keep inline, truncate if too long */
+nav[aria-label="Breadcrumb"] a,
+nav[aria-label="Breadcrumb"] li a {
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    gap: 0.375rem !important;
+}
+
+nav[aria-label="Breadcrumb"] li:last-child a {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+}
+
+/* Chevron separator - keep visible inline */
+nav[aria-label="Breadcrumb"] li svg[aria-hidden="true"],
+nav[aria-label="Breadcrumb"] svg.gb-icon {
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+}
+
+/* Mobile breadcrumb adjustments */
+@media screen and (max-width: 768px) {
+    nav[aria-label="Breadcrumb"] ol,
+    nav[aria-label="Breadcrumb"] ol.flex {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    nav[aria-label="Breadcrumb"] ol::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    nav[aria-label="Breadcrumb"] li:last-child a {
+        max-width: 250px !important;
     }
 }

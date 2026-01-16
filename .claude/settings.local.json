@@ -7,7 +7,18 @@
       "Bash(powershell -Command:*)",
       "Bash(xargs:*)",
       "Bash(findstr:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(Get-ChildItem -Path \"E:\\\\BITS\\\\github\\\\jugaadx-doubletick\" -Recurse -Filter \"*.backup*\")",
+      "WebFetch(domain:www.minifier.org)",
+      "Bash(npm install:*)",
+      "Bash(tr:*)",
+      "Bash(python add_sidebar_toggle.py:*)",
+      "Bash(python3:*)",
+      "Bash(where:*)",
+      "Bash(Select-String -Pattern \"how-customers-respond|business-initiated-calling\" -Context 3,3)",
+      "Bash(Select-Object -First 30)",
+      "Bash(perl:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []
