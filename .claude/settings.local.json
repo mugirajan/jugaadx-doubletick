@@ -18,7 +18,13 @@
       "Bash(Select-String -Pattern \"how-customers-respond|business-initiated-calling\" -Context 3,3)",
       "Bash(Select-Object -First 30)",
       "Bash(perl:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(echo:*)",
+      "Bash(powershell -NoProfile -Command:*)",
+      "Bash(tail:*)",
+      "Bash(powershell:*)",
+      "Bash(git -C \"E:\\\\BITS\\\\github\\\\jugaadx-doubletick\" status --short)"
     ],
     "deny": [],
     "ask": []
