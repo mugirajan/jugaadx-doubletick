@@ -367,7 +367,7 @@ section li[class*="flex"] {
 
 /* Hide GitBook's custom bullet divs - they create duplicate bullets */
 article li > div:first-child,
-main li > div:first-child,
+main li:not(.show-li-img) > div:first-child,
 section li > div:first-child {
     display: none !important;
 }
